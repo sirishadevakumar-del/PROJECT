@@ -1,0 +1,2 @@
+timestamp,filename,ai_prediction,confidence,doctor_decision,corrected_label
+2026-09-24T11:34:58.086083,pneumonia_sample.jpeg,PNEUMONIA,100.0,Correct the finding,NORMAL
