@@ -1,3 +1,23 @@
+# ============================================================
+# STREAMLIT APP v3 - Adaptive AI Medical Scan Analysis
+#
+# NEW in this version:
+#   1. Role-based adaptive explanation - Radiologist / Doctor / Patient
+#      each see a different depth AND style of explanation
+#   2. Scan-quality check - runs before analysis, flags blurry/dark/
+#      low-resolution images
+#   3. Similar-case retrieval - shows 2-3 visually similar reference
+#      images from the training set (needs reference_cases/ folder -
+#      see precompute_reference_embeddings.py)
+#   4. Persistent logging to Google Sheets, with automatic fallback
+#      to local CSV + download button if Sheets isn't configured yet
+#
+# Setup:
+#   pip install streamlit torch torchvision grad-cam pillow pandas opencv-python-headless gspread google-auth
+# Run:
+#   streamlit run app.py
+# ============================================================
+
 import streamlit as st
 import torch
 import torch.nn as nn
@@ -24,8 +44,8 @@ st.set_page_config(page_title="Adaptive AI Scan Analysis", layout="wide")
 # 4-class multi-disease model (after train_multidisease_colab.py):
 #   CLASS_NAMES = ["COVID", "Lung_Opacity", "Normal", "Viral Pneumonia"]
 #   MODEL_PATH = "densenet_multidisease_model.pth"
-CLASS_NAMES = ["NORMAL", "PNEUMONIA"]
-MODEL_PATH = "densenet_scan_model.pth"
+CLASS_NAMES = ["COVID", "Lung_Opacity", "Normal", "Viral Pneumonia"]
+MODEL_PATH = "densenet_multidisease_model.pth"
 NUM_CLASSES = len(CLASS_NAMES)
 
 LOG_FILE = "decision_log.csv"
@@ -314,4 +334,3 @@ if os.path.isfile(LOG_FILE):
         st.download_button("Download decision log (CSV)", f, file_name="decision_log.csv")
 else:
     st.caption("No decisions logged yet this session.")
-

@@ -1,0 +1,3 @@
+timestamp,filename,viewer_role,ai_prediction,confidence,detail_level,doctor_decision,corrected_label
+2026-09-25T16:13:30.495379,2960bd2caed451308e9f562e7cbb4b400ceaee89ff3e7dd4009a49829012736d_gallery.jpeg,Radiologist,NORMAL,100.0,full,Accept AI finding,
+2026-09-25T16:27:02.670323,images.jpg,Radiologist,COVID,100.0,full,Correct the finding,Lung_Opacity
