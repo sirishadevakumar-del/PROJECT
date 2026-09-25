@@ -1,5 +1,9 @@
-   streamlit
-   torch
-   torchvision
-   grad-cam
-   pillow
+streamlit
+torch
+torchvision
+grad-cam
+pillow
+pandas
+opencv-python-headless
+gspread
+google-auth
